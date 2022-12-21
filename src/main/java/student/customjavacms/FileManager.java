@@ -10,13 +10,13 @@ public class FileManager {
     try {
       File f = new File(filename);
       if (f.createNewFile()) {
-        System.out.println("File created: " + f.getName());
+        System.out.println(">File created : " + f.getName());
       } else {
-        System.out.println("File already exists.");
+        System.out.println(">File already exists.");
       }
 
     } catch (IOException e) {
-      System.out.println("An error occurred.");
+      System.out.println(">An error occurred.");
     }
   }
 
@@ -25,27 +25,27 @@ public class FileManager {
     Scanner scf = new Scanner(System.in);
     File f = new File(filename);
     if(f.exists() && !f.isDirectory()) { 
-      System.out.println("File has been selected");
+      System.out.println(">File has been selected");
       
       return filename;
     } else{
-      System.out.println("File doesn't exist, would you like to create it ? y/n");
+      System.out.println(">File doesn't exist, would you like to create it ? y/n");
       String ChoiceCreate = scf.nextLine();
       switch (ChoiceCreate.toLowerCase()) {
         case "y":
         case "yes":
-          System.out.println("File will be created...");
+          System.out.println(">File will be created...");
           FileManager.CreateFile(filename);
-          System.out.println("File has been selected");
+          System.out.println(">File has been selected");
           return filename;
         
         default:
-          System.out.println("This command does not exists");
+          System.out.println(">This command does not exists");
           
 
         case "n":
         case "no":
-          System.out.println("File will not be created.");
+          System.out.println(">File will not be created.");
           return null;
       
       }
