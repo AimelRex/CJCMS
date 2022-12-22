@@ -2,10 +2,12 @@ package student.customjavacms;
 import java.io.File; 
 import java.io.IOException;
 import java.util.Scanner;
-
+import java.io.FileWriter;
+import java.io.FileNotFoundException;
 
 public class FileManager {
 
+  // CREATE A FILE
   public static void CreateFile(String filename) {
     try {
       File f = new File(filename);
@@ -20,7 +22,7 @@ public class FileManager {
     }
   }
 
-
+  // SELECT A FILE
   public static String SelectFile(String filename){
     Scanner scf = new Scanner(System.in);
     File f = new File(filename);
@@ -53,4 +55,33 @@ public class FileManager {
     }
     
   }
+
+  //ADDS THE BASICS
+  public static void BasicTemplate(String filename){
+    try {
+      File myObj = new File("template.html");
+      Scanner Reader = new Scanner(myObj);
+      File file = new File(filename);
+      try {
+        FileWriter Writer = new FileWriter(file);// to append don't forget it's FileWriter(file, true)
+        while (Reader.hasNextLine()) {
+          String data = Reader.nextLine();
+          Writer.write(data);
+          Writer.write(System.lineSeparator());
+        }
+        Writer.close();
+        Reader.close();
+        System.out.println(">Successfully wrote to the file.");
+      }catch (IOException z){
+        System.out.println(">An error occurred.");
+        System.out.print(z.getMessage());
+      }
+      
+    
+    } catch (FileNotFoundException e) {
+      System.out.println(">An error occurred.");
+      e.printStackTrace();
+    }
+  }
+
 }

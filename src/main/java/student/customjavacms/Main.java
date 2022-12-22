@@ -58,13 +58,34 @@ public class Main
                                 case "help":
                                     System.out.println("=======================================================\n~~MODIFY help page~~");
                                     System.out.println("\nhelp      >   show you all commands and their use");
+                                    System.out.println("\nbasic     >   adds the basic elements of an html file");
+                                    System.out.println("\ntitle     >   let you change the title of your page");
                                     System.out.println("\nexit      >   exit this menu to go back to the main menu");
+                                    System.out.println("\n");
                                     System.out.println("=======================================================");
                                     break;
-                                
+                                case "basic":
+                                    System.out.println(">WARNING\n>this will delete existing texts in your file, are you sure you want to continue ? y/n");
+                                    String ChoiceBasic = sc.next();
+                                    switch (ChoiceBasic.toLowerCase()) {
+                                      case "y":
+                                      case "yes":
+                                        System.out.println(">File will be set to default values.");
+                                        FileManager.BasicTemplate(SelectedFile);
+                                        break;
+                                      default:
+                                        System.out.println(">This command does not exists");
+                                      case "n":
+                                      case "no":
+                                        System.out.println(">File will not be changed.");
+                                        break;
+                                    }
+                                    break;
+                                case "title":
+                                    break;
                                 case "main":    
                                 case "exit":
-                                    System.out.println(">Going back to main menu.");
+                                    System.out.println(">Going back to main menu...");
                                     modDone = true;
                                     break;
                                     
