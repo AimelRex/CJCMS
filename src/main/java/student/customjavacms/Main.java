@@ -49,7 +49,7 @@ public class Main
                         System.out.println(">You have to select a file before modifying it.");
                     } else {
                         modDone = false;
-                        System.out.println("\n=======================================================\nYou are now in the MODIFY menu.");
+                        System.out.println("\n=======================================================\n>You are now in the MODIFY menu.");
                         while(!modDone){
                             // System.out.println( "\nWhat would you like to do ?" );
                             String modAnswer = sc.next();
@@ -82,6 +82,9 @@ public class Main
                                     }
                                     break;
                                 case "title":
+                                    System.out.println(">What title would you like to give to your page ?");
+                                    String theTitle = sc.next();
+                                    FileManager.TitleChanger(SelectedFile, theTitle);
                                     break;
                                 case "main":    
                                 case "exit":
@@ -96,9 +99,10 @@ public class Main
                         }
 
                     }
-                    System.out.println("\n=======================================================\nYou are now in the MAIN menu.");
+                    System.out.println("\n=======================================================\n>You are now in the MAIN menu.");
                     break;
-
+                
+                case "exit":
                 case "close":
                 case "stop":
                     System.out.println(">Goodbye ! Thanks for using CJCMS.");

@@ -1,8 +1,10 @@
 package student.customjavacms;
 import java.io.File; 
 import java.io.IOException;
+import java.io.BufferedReader;
 import java.util.Scanner;
 import java.io.FileWriter;
+import java.io.FileReader;
 import java.io.FileNotFoundException;
 
 public class FileManager {
@@ -56,7 +58,7 @@ public class FileManager {
     
   }
 
-  //ADDS THE BASICS
+  //ADD THE BASICS
   public static void BasicTemplate(String filename){
     try {
       File myObj = new File("template.html");
@@ -83,5 +85,43 @@ public class FileManager {
       e.printStackTrace();
     }
   }
+
+  //CHANGE THE TITLE
+  public static void TitleChanger(String filename, String title){
+    System.out.println(">Changing the title.");
+    File toModify = new File(filename);
+    String old ="";
+    try{
+      BufferedReader BReader = new BufferedReader(new FileReader(toModify));
+      String line = BReader.readLine();
+      while (line != null) 
+      {
+        if(line.contains("<title>")){
+          old=old+"<title>"+title+"</title>"+System.lineSeparator();
+        }else{
+          old = old + line + System.lineSeparator();
+        }
+        line = BReader.readLine();
+      }
+      FileWriter writer = new FileWriter(toModify);    
+      writer.write(old);
+      writer.close();
+      BReader.close();
+      System.out.println(">Successfully changed title.");
+    } catch(IOException e){
+      System.out.println(">An error occurred.");
+      e.printStackTrace();
+    }
+    
+  }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }
